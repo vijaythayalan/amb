@@ -1,0 +1,55 @@
+.App {
+	background-color: #9f9fdf;
+	min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  min-height: 5%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.details-header {
+  height: 20%;
+  border-style: solid;
+  border-color: blue;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  color: white;
+}
+
+.titleLabel {
+	text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+
+.titleText {
+	text-align: left;
+    clear: both;
+    float:left;
+    margin-right:15px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.DetailsDiv .column{
+  width: 200px;
+  float:left;
+}
+.DetailsDiv .column input,
+.DetailsDiv .column label{
+  display:inline;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
