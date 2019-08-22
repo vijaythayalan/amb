@@ -1,5 +1,8 @@
+
 docker
 	-> Base command to execute all docker related commands.
+
+Creations:
 
 Build
 	-> docker build -t <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME> .
@@ -8,13 +11,52 @@ Run
 	-> docker run 
 		-> --publish or -p => Publish a container’s port(s) to the host
 		-> --detach or -d => Run container in background and print container ID
+Start
+	-> docker start <CONTAINER_NAME>
+		=> docker start vijaythayalan/average_minimum_balance
+Stop
+	-> docker stop <CONTAINER_NAME>
+		=> docker stop vijaythayalan/average_minimum_balance
+Pull
+	-> docker pull <DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME> 
+		=> docker pull ubuntu:jessie
+	-> docker pull <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME> 
+		=> docker pull vijaythayalan/average_minimum_balance:v1.0
+Push
+	-> docker push <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME> 
+		=> docker push vijaythayalan/average_minimum_balance:v1.0
+exec
+	-> docker exec -it <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME> bash
+		=> docker exec -it vijaythayalan/average_minimum_balance bash
+tag
+	-> docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+		=> docker tag vijaythayalan/average_minimum_balance:v1.0 vijaythayalan/average_minimum_balance:v1.0
+
+Viewing:
+	-> docker ps
+		-> Viewer containers. 
+	-> docker ps -a -s
+		-> -a => Viewer all containers.
+		-> -s => size of the containers.
+	-> docker images
+		-> Viewing all docker images.
+	
+Deleting:
+	-> docker rm <CONTAINER_ID> -f
+		-> Remove container with -f (force)
+	-> docker rmi <IMAGE_ID> -f
+		-> Remove images with -f (force)
+	-> docker container COMMAND
+		-> prune => Remove all stopped containers
+	-> docker image COMMAND
+		-> prune -a => Remove all unused images
 
 docker login
-	-> provide credentails
+	=> provide credentails
 docker push <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME>
-	-> docker push vijaythayalan/average_minimum_balance:v1.0 // Sample
+	=> docker push vijaythayalan/average_minimum_balance:v1.0 // Sample
 docker tag <LOCAL_REPOSITARY_NAME>:<LOCAL_TAG_NAME> <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME>
-	-> docker tag vijaythayalan/average_minimum_balance:v1.0 vijaythayalan/average_minimum_balance:v1.0
+	=> docker tag vijaythayalan/average_minimum_balance:v1.0 vijaythayalan/average_minimum_balance:v1.0
 	
 Please refer below link
 
