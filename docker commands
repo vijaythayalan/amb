@@ -1,0 +1,21 @@
+docker
+	-> Base command to execute all docker related commands.
+
+Build
+	-> docker build -t <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME> .
+		-> --tag or -t => Name and optionally a tag in the ‘name:tag’ format
+Run
+	-> docker run 
+		-> --publish or -p => Publish a container’s port(s) to the host
+		-> --detach or -d => Run container in background and print container ID
+
+docker login
+	-> provide credentails
+docker push <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME>
+	-> docker push vijaythayalan/average_minimum_balance:v1.0 // Sample
+docker tag <LOCAL_REPOSITARY_NAME>:<LOCAL_TAG_NAME> <DOCKER_HUB_USER_NAME>/<DOCKER_HUB_REPOSITARY_NAME>:<TAG_NAME>
+	-> docker tag vijaythayalan/average_minimum_balance:v1.0 vijaythayalan/average_minimum_balance:v1.0
+	
+Please refer below link
+
+https://docs.docker.com/engine/reference/commandline/docker/
