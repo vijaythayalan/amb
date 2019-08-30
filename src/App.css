@@ -26,7 +26,11 @@
     float:left;
     margin-right:15px;
 }
-
+.checkBalance {
+	height: 30px;
+	width: 100px;
+	font-size: calc(3px + 2vmin);
+}
 .titleText {
 	height: 20%;
 	text-align: left;
