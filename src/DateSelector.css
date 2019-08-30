@@ -1,0 +1,5 @@
+.checkBalance {
+	height: 30px;
+	width: 150px;
+	font-size: calc(3px + 2vmin);
+}
