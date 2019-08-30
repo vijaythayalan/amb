@@ -92,15 +92,22 @@ class DateSelector extends React.Component {
 	const currentDate = new Date();
 	let currentDay = currentDate.getDay();
     let tableDa = this.state.tableData;
-	const keyValue = [];
+	let keyValue = [];
 
 	Object.entries(tableDa).forEach(function([key, value]) 
 	{
-		let keyVal = value["selectionDate"].getDate();
-		let valueVal = value["selectionAmount"];
-
-		keyValue.push({keyVal: valueVal});
+		var newValues = {};
+		newValues.keyVal = value["selectionDate"].getDate();
+		newValues.valueVal = value["selectionAmount"];
+		
+		keyValue.push(newValues);
 	});
+	keyValue = this.sortObject(keyValue);
+	var i = 8;
+  }
+  
+  sortObject(o) {
+    return Object.keys(o).sort().reduce((r, k) => (r[k] = o[k], r), {});
   }
 
   getMonthFromString = function(monthName) {
