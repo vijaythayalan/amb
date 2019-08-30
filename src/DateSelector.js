@@ -87,25 +87,55 @@ class DateSelector extends React.Component {
     });
   }
 
-  checkBalance() {
-    console.log("MinBalance: " + this.props.minBalance);
-	const currentDate = new Date();
-	let currentDay = currentDate.getDay();
-    let tableDa = this.state.tableData;
-	let keyValue = [];
+daysInMonth(anyDateInMonth) {
+    return new Date(anyDateInMonth.getFullYear(),
+        anyDateInMonth.getMonth() + 1,
+        0).getDate();
+}
 
-	Object.entries(tableDa).forEach(function([key, value]) 
-	{
-		var newValues = {};
-		newValues.keyVal = value["selectionDate"].getDate();
-		newValues.valueVal = value["selectionAmount"];
-		
-		keyValue.push(newValues);
-	});
-	keyValue = this.sortObject(keyValue);
-	var i = 8;
-  }
-  
+checkBalance() {
+    const minimumBalance = this.props.minBalance;
+    const currentDate = new Date();
+    let currentDay = currentDate.getDay();
+    let tableDa = this.state.tableData;
+    let keyValue = [];
+    const startDate = 1;
+    let lengthOfMonth = this.daysInMonth(currentDate);
+    let tillYesterdayHolding = 0;
+    let lastAmount = 0;
+
+    Object.entries(tableDa).forEach(function([key, value]) {
+        var newValues = {};
+        newValues.keyVal = value["selectionDate"].getDate();
+        newValues.valueVal = value["selectionAmount"];
+
+        keyValue.push(newValues);
+    });
+    //keyValue = this.sortObject(keyValue);
+    // TODO sorting the date to show latest amount
+
+    let monthlyMaintainAmount = minimumBalance * (lengthOfMonth - (startDate - 1));
+    // Your Account should maintain this monthlyMaintainAmount 
+
+    for (let days = startDate; days < currentDay; days++) {
+        if (keyValue.containsKey(days)) {
+            lastAmount = keyValue.get(days);
+            tillYesterdayHolding += lastAmount;
+        } else {
+            tillYesterdayHolding += lastAmount;
+        }
+    }
+
+    // Your Account holding till yesterday tillYesterdayHolding
+
+    if (tillYesterdayHolding > monthlyMaintainAmount) {
+        // Your Account has maintained sufficient Average Monthly Balance!
+    } else {
+        let remainingDate = lengthOfMonth - currentDay + 1;
+        let remainingAmount = (monthlyMaintainAmount - tillYesterdayHolding);
+        // Your Account need to maintain %s amount in %d days ie average of %s %s ", nf1.format(remainingAmount), remainingDate, nf1.format(remainingAmount / remainingDate), SYMBOL);
+    }
+}
   sortObject(o) {
     return Object.keys(o).sort().reduce((r, k) => (r[k] = o[k], r), {});
   }
